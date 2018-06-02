@@ -13,10 +13,12 @@ public:
 
 private:
     MainWindow slotGame;
-    int coin, bet, multiplier, won;
+    int coins, bet, multiplier, won;
+
 signals:
 
 public slots:
+
 };
 
 #endif // GAMEMANAGER_H

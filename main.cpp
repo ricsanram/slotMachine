@@ -1,4 +1,3 @@
-#include "mainwindow.h"
 #include "gamemanager.h"
 #include <QApplication>
 

@@ -21,6 +21,9 @@ public:
     void setMultiplier(int);
     void setWon(int);
     void setRandomNumbers(int,int,int);
+    void addCoins(int);
+    void subtractCoins(int);
+    void addBet();
     ~MainWindow();
 
 
@@ -40,6 +43,7 @@ private:
     int randNum2;
     int randNum3;
     int coins,bet,multiplier,won;
+    bool resetBet;
 
 public slots:
     void displayPull();
@@ -47,6 +51,8 @@ public slots:
     void displayWon();
     void displayMultiplier();
     void displayCoins();
+    void actionBet();
+    void actionPull();
 
 };
 
