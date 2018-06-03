@@ -153,6 +153,7 @@ void MainWindow::actionPull()
 {
     if (bet!=0)
     {
+        setWon(0);
         ui->labelWon->setText("YOU WON " + QString::number(won) + " COINS!");
         subtractCoins(bet);
         displayPull();
