@@ -2,8 +2,10 @@
 
 GameManager::GameManager(QWidget *parent) : QWidget(parent)
 {
+    slotGame.showBegin();
     slotGame.show();
-    slotGame.displayPull();
+//    slotGame.displayPull();
+
 }
 
 

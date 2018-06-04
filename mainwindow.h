@@ -5,6 +5,8 @@
 #include <QMovie>
 #include <QPixmap>
 #include <QRandomGenerator>
+#include "randomnumbergenerator.h"
+#include <QVector>
 
 namespace Ui {
 class MainWindow;
@@ -24,9 +26,10 @@ public:
     void addCoins(int);
     void subtractCoins(int);
     void addBet();
+    void performMultiplier(int);
+    void showBegin();
+    void randomReels();
     ~MainWindow();
-
-
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +47,9 @@ private:
     int randNum3;
     int coins,bet,multiplier,won;
     bool resetBet;
+    bool allowSpin;
+
+signals:
 
 public slots:
     void displayPull();

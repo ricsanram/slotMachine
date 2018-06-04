@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     multiplier=0;
     won=0;
     resetBet = false;
+    allowSpin = true;
     displayBet();
     displayMultiplier();
     displayPull();
@@ -55,6 +56,8 @@ void MainWindow::setBet(int inputBet)
 void MainWindow::setMultiplier(int inputMultiplier)
 {
     multiplier = inputMultiplier;
+    setWon(bet * multiplier);
+    addCoins(won);
     displayMultiplier();
 }
 
@@ -89,17 +92,34 @@ void MainWindow::addBet()
     displayBet();
 }
 
+void MainWindow::performMultiplier(int letterSpun)
+{
+    setMultiplier(letterSpun+1);
+}
+
+void MainWindow::showBegin()
+{
+    ui->slot1->setPixmap(letters[0]);
+    ui->slot1->setPixmap(letters[0]);
+    ui->slot1->setPixmap(letters[0]);
+}
+
+void MainWindow::randomReels()
+{
+    randNum1 = QRandomGenerator::global()->generate()%7;
+    randNum2 = QRandomGenerator::global()->generate()%7;
+    randNum3 = QRandomGenerator::global()->generate()%7;
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-
 void MainWindow::displayPull()
 {
-    randNum1 = QRandomGenerator::global()->generate()%7;
-    randNum2 = QRandomGenerator::global()->generate()%7;
-    randNum3 = QRandomGenerator::global()->generate()%7;
+    randomReels();
+    RandomNumberGenerator randy;
     ui->slot1->setMovie(animation);
     ui->slot2->setMovie(animation);
     ui->slot3->setMovie(animation);
@@ -151,21 +171,34 @@ void MainWindow::actionBet()
 
 void MainWindow::actionPull()
 {
-    if (bet!=0)
+    if (coins > 0 && coins >= bet)
     {
-        setWon(0);
-        ui->labelWon->setText("YOU WON " + QString::number(won) + " COINS!");
-        subtractCoins(bet);
-        displayPull();
-        if (randNum1==randNum2 && randNum2==randNum3)
+        if (allowSpin ==true)
         {
-            setWon(100);
+            if (bet!=0)
+            {
+                allowSpin = false;
+                setMultiplier(0);
+                setWon(0);
+                ui->labelWon->setText("YOU WON " + QString::number(won) + " COINS!");
+                subtractCoins(bet);
+                displayPull();
+                if (randNum1==randNum2 && randNum2==randNum3)
+                {
+                    performMultiplier(randNum1);
+                }
+                if (randNum1== 0 && randNum2==1 &&randNum3==2)
+                    performMultiplier(7);
+                if (randNum1== 3 && randNum2==4 &&randNum3==5)
+                    performMultiplier(8);
+                setBet(bet);
+                resetBet = true;
+                allowSpin = true;
+            } else
+                ui->labelWon->setText("ADD YOUR BET!");
         }
-
-        setBet(bet);
-        addCoins(won);
-        resetBet = true;
-    } else
-        ui->labelWon->setText("ADD YOUR BET!");
+    }
+    else
+        ui->labelWon->setText("NEED COINS TO BET!");
 
 }

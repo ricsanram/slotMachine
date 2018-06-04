@@ -26,11 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    gamemanager.cpp
+    gamemanager.cpp \
+    randomnumbergenerator.cpp \
+    worker.cpp \
+    controller.cpp
 
 HEADERS += \
         mainwindow.h \
-    gamemanager.h
+    gamemanager.h \
+    randomnumbergenerator.h \
+    worker.h \
+    controller.h
 
 FORMS += \
         mainwindow.ui

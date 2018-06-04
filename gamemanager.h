@@ -18,7 +18,6 @@ private:
 signals:
 
 public slots:
-
 };
 
 #endif // GAMEMANAGER_H
