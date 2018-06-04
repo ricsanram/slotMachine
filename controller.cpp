@@ -1,4 +1,5 @@
 #include "controller.h"
+#include <QDebug>
 
 Controller::Controller()
 {
@@ -13,9 +14,10 @@ Controller::Controller()
     workerThread.start();
 }
 
-void Controller::handleRandNum(const int &randnum)
+void Controller::handleRandNum(int randnum)
 {
    randomNumber = randnum;
+   qDebug() << randnum;
 }
 
 Controller::~Controller()

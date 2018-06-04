@@ -10,7 +10,7 @@ class Worker : public QObject
 public:
 
 signals:
-    void readyRandNum(const int &randNum);
+    void readyRandNum(int x);
 public slots:
     void doWorkRandom();
     int randomNumber();

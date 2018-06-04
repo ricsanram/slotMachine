@@ -4,9 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui concurrent widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets testlib
+
+target.path = $$[QT_INSTALL_EXAMPLES]/qtconcurrent/runfunction
+INSTALLS += target
 
 TARGET = slotMachine
 TEMPLATE = app

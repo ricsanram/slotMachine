@@ -1,5 +1,6 @@
 #include "worker.h"
 #include <QMutex>
+#include <QDebug>
 
 void Worker::doWorkRandom()
 {
@@ -13,6 +14,6 @@ void Worker::doWorkRandom()
 
 int Worker::randomNumber()
 {
-    int temp = QRandomGenerator::global()->generate()%7;
+    int temp = (QRandomGenerator::global()->generate())%7;
     return temp;
 }

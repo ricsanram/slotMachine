@@ -19,7 +19,7 @@ private:
 signals:
     void createRandNum();
 public slots:
-    void handleRandNum(const int &randnum);
+    void handleRandNum(int randnum);
 };
 
 #endif // CONTROLLER_H

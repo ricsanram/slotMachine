@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QTest>
 #include <QVector>
+#include <QtConcurrent>
+#include <QThread>
+#include <qtconcurrentrun.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -106,9 +109,10 @@ void MainWindow::showBegin()
 
 void MainWindow::randomReels()
 {
-    randNum1 = QRandomGenerator::global()->generate()%7;
-    randNum2 = QRandomGenerator::global()->generate()%7;
-    randNum3 = QRandomGenerator::global()->generate()%7;
+    RandomNumberGenerator randy;
+    randNum1 = randy.getRandy1();
+    randNum2 = randy.getRandy2();
+    randNum3 = randy.getRandy3();
 }
 
 MainWindow::~MainWindow()

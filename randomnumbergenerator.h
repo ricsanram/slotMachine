@@ -14,9 +14,13 @@ public:
     int getRandy1();
     int getRandy2();
     int getRandy3();
+    static int generate();
     explicit RandomNumberGenerator(QWidget *parent = nullptr);
 
 private:
+    int randy1;
+    int randy2;
+    int randy3;
 signals:
 
 public slots:

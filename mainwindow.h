@@ -7,6 +7,7 @@
 #include <QRandomGenerator>
 #include "randomnumbergenerator.h"
 #include <QVector>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
